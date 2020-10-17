@@ -37,7 +37,10 @@ Handeling Drp SoortLeningen
     Run Keyword if  @{value}[0] == Lening       Choice Lening
     ...  ELSE IF  @{value}[1] == Belegging    Choice Belegging
     ...  ELSE       Choice Lening
-
+Choose a Loansort
+    [Arguments]  ${value}
+    Wait Until Page Contains Element    ${drd_ChoiceSortLeningen_xpath}  10
+    Select From List By Label  ${drd_ChoiceSortLeningen_xpath}  ${value}  
     #Select From List By Index   ${drd_ChoiceSortLeningen_xpath}     ${index}
 Genarate lening number
     Wait Until Page Contains Element    ${btn_Geneer_xpath}  10
@@ -54,6 +57,15 @@ Search Relation
     [Arguments]  ${value}
     Wait Until Page Contains Element  ${txt_NumberRealtie_xpath}  10
     Input Text  ${txt_NumberRealtie_xpath}  ${value}
+Search Relation With Relationname
+    [Arguments]  ${value}
+    Wait Until Page Contains Element  ${txt_NaamRelatie_xpath}  10
+    Input Text  ${txt_NaamRelatie_xpath}  ${value}
+
+#  
+Click the first row with the name
+    Wait Until Page Contains Element  ${tr_1stRow}  20
+    Click Element  ${tr_1stRow}  
 Click the first relation row
     Wait Until Page Contains Element  ${td_Frirst_Number_xpath}  10
     Click Element  ${td_Frirst_Number_xpath}
@@ -107,3 +119,14 @@ Validate the 1st message
     ${text}  Get Text   ${lbl_AutoIngvul_xpath}
     Log  ${text}
     Element Text Should Be  ${lbl_AutoIngvul_xpath}  ${value}
+Validate the pledge effective date visible
+    Wait Until Page Contains Element  ${txt_Verpanding_Ingangsdatum_Xpath}
+    ${text}  Get Text   ${txt_Verpanding_Ingangsdatum_Xpath}
+    Log  ${text}
+    Element Should Not Be Visible  ${txt_Verpanding_Ingangsdatum_Xpath}
+    #Element Text Should Be  ${txt_Verpanding_Ingangsdatum_Xpath}  ${value}
+Validate the pledge on end date visible
+    Wait Until Page Contains Element  ${txt_Verpanding_Eindatum_Xpath}
+    ${text}  Get Text   ${txt_Verpanding_Eindatum_Xpath}
+    Log  ${text}
+    Element Should Not Be Visible  ${txt_Verpanding_Eindatum_Xpath}

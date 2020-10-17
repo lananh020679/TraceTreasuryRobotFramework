@@ -29,7 +29,7 @@ Invalid login
     [Arguments]  ${companyName}  ${userName}
     [Documentation]  The test case verifies a goed scenario login
     [Tags]  Regression
-    Enter Company Name      ${companyName}
-    Enter User Name     ${userName}
-    Click Login
-    Error message should be visible  The provided username and/or password are incorrect.
+    LoginPage.Enter Company Name      ${companyName}
+    LoginPage.Enter User Name     ${userName}
+    LoginPage.Click Login
+    LoginPage.Error message should be visible  De opgegeven gebruikersnaam en/of wachtwoord zijn niet juist.

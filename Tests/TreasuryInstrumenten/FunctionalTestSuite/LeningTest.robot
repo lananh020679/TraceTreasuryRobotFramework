@@ -10,6 +10,7 @@ ${userName}  anhpham
 ${atr}  text
 ${message}  Er zijn geen resultaten gevonden.
 ${message1st}  Eén of meerdere waarden zijn automatisch ingevuld. Controleer a.u.b. deze waarden en indien deze waarden correct zijn klik nogmaals op opslaan.
+${text}  ${null}
 *** Keywords ***
 *** Test Cases ***
 Validate succesfully open leneningen page
@@ -60,7 +61,8 @@ The Verpanding ingangsdatum should be empty
     LeningenPage.Click Sluiten Button
     LeningenPage.Enter Looptijd  20
     LeningenPage.Click Opslaan Button
-    LeningenPage.Validate the pledge effective date  None
+    LeningenPage.Validate the pledge effective date visible  
+    #LeningenPage.Validate the pledge effective date  \'\'
 The Verpanding einddatum should be empty
     [Documentation]  After the first saving lening, validate that Verpanding einddatum should be empty
     [Tags]  Functional
@@ -81,7 +83,8 @@ The Verpanding einddatum should be empty
     LeningenPage.Click Sluiten Button
     LeningenPage.Enter Looptijd  20
     LeningenPage.Click Opslaan Button
-    LeningenPage.Validate the pledge on end date  None
+    LeningenPage.Validate the pledge on end date visible
+    #LeningenPage.Validate the pledge on end date  ''
 Validate the 1st message after 1st saving
     [Documentation]  After the first saving lening, validate the 1st message
     [Tags]  Regression

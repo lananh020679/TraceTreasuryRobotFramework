@@ -35,3 +35,8 @@ Error message should be visible
     Element Text Should Be  ${lbl_Invalidlogin_xpath}  ${error}
 Close My Browser
     close all browsers
+Click 0n User
+    click button  ${btn_User}
+Click On Uitloggen
+    #Wait Until Page Does Not Contain Element  ${span_Uitloggen}
+    Click Element  ${span_Uitloggen}
